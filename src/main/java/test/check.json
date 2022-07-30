@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Imperio",
+    "address": {
+      "type": "Office",
+      "addLine": "4th Street",
+      "city": "Bengaluru",
+      "state": "Karnataka"
+    },
+    "staff": [
+      {
+        "designation": "Manager",
+        "name": "Jagan",
+        "age": "30",
+        "address": {
+          "type": "Home",
+          "addLine": "Main Street",
+          "city": "Bengaluru",
+          "state": "Karnataka"
+        }
+      },
+      {
+        "designation": "Waiter",
+        "name": "Mohan",
+        "age": "25",
+        "address": {
+          "type": "Home",
+          "addLine": "Side Street",
+          "city": "Bengaluru",
+          "state": "Karnataka"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Sip N Bite",
+    "address": {
+      "type": "Office",
+      "addLine": "West Street",
+      "city": "Bengaluru",
+      "state": "Karnataka"
+    },
+    "staff": [
+      {
+        "designation": "Manager",
+        "name": "Madan",
+        "age": "40",
+        "address": {
+          "type": "Home",
+          "addLine": "East Street",
+          "city": "Bengaluru",
+          "state": "Karnataka"
+        }
+      },
+      {
+        "designation": "Waiter",
+        "name": "Malvia",
+        "age": "29",
+        "address": {
+          "type": "Home",
+          "addLine": "Point Street",
+          "city": "Bengaluru",
+          "state": "Karnataka"
+        }
+      }
+    ]
+  }
+]
