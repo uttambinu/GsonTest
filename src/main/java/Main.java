@@ -3,13 +3,17 @@ import model.Address;
 import model.Restaurant;
 import model.Staff;
 import com.google.gson.reflect.TypeToken;
+import org.apache.commons.io.FileUtils;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         //serializedJson();
         deserializedJson();
     }
@@ -54,14 +58,17 @@ public class Main {
         String json = gson.toJson(restaurantList);
     }
 
-    public static void deserializedJson(){
-        String address = "[{\"name\":\"Imperio\",\"address\":{\"type\":\"Office\",\"addLine\":\"4thStreet\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\"},\"staff\":[{\"designation\":\"Manager\",\"name\":\"Jagan\",\"age\":\"30\",\"address\":{\"type\":\"Home\",\"addLine\":\"MainStreet\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\"}},{\"designation\":\"Waiter\",\"name\":\"Mohan\",\"age\":\"25\",\"address\":{\"type\":\"Home\",\"addLine\":\"SideStreet\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\"}}]},{\"name\":\"SipNBite\",\"address\":{\"type\":\"Office\",\"addLine\":\"WestStreet\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\"},\"staff\":[{\"designation\":\"Manager\",\"name\":\"Madan\",\"age\":\"40\",\"address\":{\"type\":\"Home\",\"addLine\":\"EastStreet\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\"}},{\"designation\":\"Waiter\",\"name\":\"Malvia\",\"age\":\"29\",\"address\":{\"type\":\"Home\",\"addLine\":\"PointStreet\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\"}}]}]";
+    public static void deserializedJson() throws IOException {
+        //String address = "[{\"name\":\"Imperio\",\"address\":{\"type\":\"Office\",\"addLine\":\"4thStreet\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\"},\"staff\":[{\"designation\":\"Manager\",\"name\":\"Jagan\",\"age\":\"30\",\"address\":{\"type\":\"Home\",\"addLine\":\"MainStreet\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\"}},{\"designation\":\"Waiter\",\"name\":\"Mohan\",\"age\":\"25\",\"address\":{\"type\":\"Home\",\"addLine\":\"SideStreet\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\"}}]},{\"name\":\"SipNBite\",\"address\":{\"type\":\"Office\",\"addLine\":\"WestStreet\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\"},\"staff\":[{\"designation\":\"Manager\",\"name\":\"Madan\",\"age\":\"40\",\"address\":{\"type\":\"Home\",\"addLine\":\"EastStreet\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\"}},{\"designation\":\"Waiter\",\"name\":\"Malvia\",\"age\":\"29\",\"address\":{\"type\":\"Home\",\"addLine\":\"PointStreet\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\"}}]}]";
+        File file = new File("C:\\Users\\uttam.prakash\\Desktop\\JsonToString\\myFile.json");
+        String t = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
+
         Gson gson = new Gson();
         Type type = new TypeToken<List<Restaurant>>(){}.getType();
-        List<Restaurant> json = gson.fromJson(address, type);
+        List<Restaurant> json = gson.fromJson(t, type);
 
         for (Restaurant restaurant : json){
-            if(restaurant.getName().equals("SipNBite")){
+            if(restaurant.getName().equals("Sip N Bite")){
                 for(Staff staff : restaurant.getStaff()){
                     if(staff.getName().equals("Madan")){
                         staff.setDesignation("Senior Manager");
